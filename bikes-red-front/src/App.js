@@ -1,7 +1,11 @@
-import MapBike from "./components/map";
+import HomePage from "./pages/HomPage";
 
 function App() {
-  return <MapBike />;
+  return (
+    <div>
+      <HomePage />
+    </div>
+  );
 }
 
 export default App;

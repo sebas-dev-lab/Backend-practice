@@ -1,8 +1,4 @@
-#map {
-  height: 100hv;
-}
-
 .leaftlet-container {
-  height: 100vh;
-  width: 100vw;
+  height: 40vh;
+  width: 40vw;
 }
