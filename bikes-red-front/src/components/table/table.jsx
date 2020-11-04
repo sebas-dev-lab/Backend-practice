@@ -3,7 +3,7 @@ import { Table } from "reactstrap";
 
 const TableMap = ({ bks }) => {
   return (
-    <Table dark>
+    <Table dark className="container">
       <thead>
         <tr>
           <th>Id</th>
