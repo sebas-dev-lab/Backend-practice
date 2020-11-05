@@ -4,12 +4,13 @@ import { Table } from "reactstrap";
 import { Trash } from "react-bootstrap-icons";
 
 const TableMap = ({ bks }) => {
-  const handleDelete = (id) => {
+  const handleDelete = (e, id) => {
     const url = "http://localhost:3001";
     axios
       .delete(`${url}/bikes/${id}`)
       .then((res) => {
         console.log("Eliminado");
+        e.preventDefault();
       })
       .catch((err) => console.log("error"));
   };

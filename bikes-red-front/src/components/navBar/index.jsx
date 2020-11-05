@@ -9,7 +9,7 @@ import {
   NavLink,
 } from "reactstrap";
 
-const NavBar = (props) => {
+const NavBar = () => {
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -24,6 +24,11 @@ const NavBar = (props) => {
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
+              <NavLink className="text-white" href="/bikes">
+                Details Bikes
+              </NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink className="text-white" href="/bikes/create">
                 Add Bikes
               </NavLink>
@@ -31,11 +36,6 @@ const NavBar = (props) => {
             <NavItem>
               <NavLink className="text-white" href="/bikes/update">
                 Update Bikes
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="text-white" href="/bikes">
-                Details Bikes
               </NavLink>
             </NavItem>
           </Nav>
