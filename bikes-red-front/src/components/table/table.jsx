@@ -1,18 +1,15 @@
 import React from "react";
-import axios from "axios";
+import { useDispatch } from "react-redux";
 import { Table } from "reactstrap";
 import { Trash } from "react-bootstrap-icons";
+import { deleteBike } from "../../redux/actions/bikesActions";
 
 const TableMap = ({ bks }) => {
-  const handleDelete = (e, id) => {
-    const url = "http://localhost:3001";
-    axios
-      .delete(`${url}/bikes/${id}`)
-      .then((res) => {
-        console.log("Eliminado");
-        e.preventDefault();
-      })
-      .catch((err) => console.log("error"));
+  const dispatch = useDispatch();
+  const handleDelete = (id) => {
+    console.log(bks);
+    console.log(id);
+    dispatch(deleteBike(id));
   };
 
   return (

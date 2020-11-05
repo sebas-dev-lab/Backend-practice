@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useDispatch } from "react-redux";
 import { Col, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { putBike } from "../../../redux/actions/bikesActions";
 
 const FormUpdate = () => {
+  const dispatch = useDispatch();
   const [update, setUpdate] = useState({
     id: "",
     color: "",
@@ -11,27 +13,20 @@ const FormUpdate = () => {
     log: "",
   });
 
+  let id = update.id;
   const updateBike = (e, id) => {
-    const url = "http://localhost:3001";
-    axios
-      .put(`${url}/bikes/${id}`, {
-        id: update.id,
-        color: update.color,
-        model: update.model,
-        lat: update.lat,
-        log: update.log,
-      })
+    dispatch(putBike(id, update))
       .then((res) => {
         e.target.reset();
+        e.preventDefault();
       })
       .catch((err) => console.log(err));
   };
-  let id = update.id;
   const handleChange = (e) => {
     e.preventDefault();
     setUpdate({
       ...update,
-      [e.target.name]: [e.target.value],
+      [e.target.name]: e.target.value,
     });
   };
 

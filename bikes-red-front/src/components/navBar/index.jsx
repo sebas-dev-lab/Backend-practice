@@ -17,10 +17,10 @@ const NavBar = () => {
   return (
     <div className="text-white">
       <Navbar color="dark" light>
+        <NavbarToggler onClick={toggleNavbar} className="mr-2 bg-white" />
         <NavbarBrand href="/" className="mr-auto text-white">
           BikesApp
         </NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} className="mr-2 bg-white" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>

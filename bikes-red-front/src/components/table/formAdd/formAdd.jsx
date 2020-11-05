@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useDispatch } from "react-redux";
 import { Col, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { addBikes } from "../../../redux/actions/bikesActions";
 
 const FormAddBike = () => {
+  const dispatch = useDispatch();
   const [input, setInput] = useState({
     id: "",
     color: "",
@@ -14,24 +16,19 @@ const FormAddBike = () => {
     e.preventDefault();
     setInput({
       ...input,
-      [e.target.name]: [e.target.value],
+      [e.target.name]: e.target.value,
     });
   };
+
   const handleAddBike = (e) => {
-    // e.preventDefault();
-    const url = "http://localhost:3001";
-    axios
-      .post(`${url}/bikes/create/`, {
-        id: input.id,
-        color: input.color,
-        model: input.model,
-        lat: input.lat,
-        log: input.log,
-      })
+    dispatch(addBikes(input))
       .then((res) => {
         e.target.reset();
+        e.preventDefault();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
