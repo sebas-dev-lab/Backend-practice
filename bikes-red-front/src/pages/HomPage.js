@@ -3,6 +3,7 @@ import MapBike from "../components/map";
 import TableMap from "../components/table/table";
 import axios from "axios";
 import FormAddBike from "../components/table/formAdd/formAdd";
+import FormUpdate from "../components/table/formUpdate/formUpdate";
 
 /* ==== Bikes ===== */
 const url = "http://localhost:3001";
@@ -27,6 +28,7 @@ const HomePage = () => {
       <MapBike locBikes={allBikes} />
       <TableMap bks={allBikes} />
       <FormAddBike />
+      <FormUpdate />
     </div>
   );
 };

@@ -2,40 +2,41 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Col, Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-const FormAddBike = () => {
-  const [input, setInput] = useState({
+const FormUpdate = () => {
+  const [update, setUpdate] = useState({
     id: "",
     color: "",
     model: "",
     lat: "",
     log: "",
   });
-  const handleChange = (e) => {
-    e.preventDefault();
-    setInput({
-      ...input,
-      [e.target.name]: [e.target.value],
-    });
-  };
-  const handleAddBike = (e) => {
-    // e.preventDefault();
+
+  const updateBike = (e, id) => {
     const url = "http://localhost:3001";
     axios
-      .post(`${url}/bikes/create/`, {
-        id: input.id,
-        color: input.color,
-        model: input.model,
-        lat: input.lat,
-        log: input.log,
+      .put(`${url}/bikes/${id}`, {
+        id: update.id,
+        color: update.color,
+        model: update.model,
+        lat: update.lat,
+        log: update.log,
       })
       .then((res) => {
         e.target.reset();
       })
       .catch((err) => console.log(err));
   };
+  let id = update.id;
+  const handleChange = (e) => {
+    e.preventDefault();
+    setUpdate({
+      ...update,
+      [e.target.name]: [e.target.value],
+    });
+  };
 
   return (
-    <Form onSubmit={handleAddBike} className="container">
+    <Form onSubmit={(e) => updateBike(e, id)} className="container">
       <FormGroup row>
         <Label for="Id" sm={2}>
           Id
@@ -112,4 +113,4 @@ const FormAddBike = () => {
   );
 };
 
-export default FormAddBike;
+export default FormUpdate;

@@ -1,7 +1,19 @@
 import React from "react";
+import axios from "axios";
 import { Table } from "reactstrap";
+import { Trash } from "react-bootstrap-icons";
 
 const TableMap = ({ bks }) => {
+  const handleDelete = (id) => {
+    const url = "http://localhost:3001";
+    axios
+      .delete(`${url}/bikes/${id}`)
+      .then((res) => {
+        console.log("Eliminado");
+      })
+      .catch((err) => console.log("error"));
+  };
+
   return (
     <Table dark className="container">
       <thead>
@@ -23,6 +35,9 @@ const TableMap = ({ bks }) => {
                 <td>
                   {" "}
                   lat: {bike.location[0]} || log: {bike.location[1]}
+                </td>
+                <td>
+                  <Trash onClick={() => handleDelete(bike.id)} />
                 </td>
               </tr>
             );
