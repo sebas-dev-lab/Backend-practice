@@ -30,10 +30,10 @@ Bike.remove = function (id) {
   });
 };
 
-var a = new Bike(1, "red", "urban", [-26.5382994, -59.3446029]);
-var b = new Bike(2, "blue", "terrain", [-26.539125, -59.3435837]);
+// var a = new Bike(1, "red", "urban", [-26.5382994, -59.3446029]);
+// var b = new Bike(2, "blue", "terrain", [-26.539125, -59.3435837]);
 
-Bike.add(a);
-Bike.add(b);
+// Bike.add(a);
+// Bike.add(b);
 
 module.exports = Bike;
