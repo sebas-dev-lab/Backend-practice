@@ -21,6 +21,9 @@ const NavBar = () => {
         <NavbarBrand href="/" className="mr-auto text-white">
           BikesApp
         </NavbarBrand>
+        <NavbarBrand href="/" className="mr-left text-white">
+          Victor Sebastián Lescano
+        </NavbarBrand>
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
