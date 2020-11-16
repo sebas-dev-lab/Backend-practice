@@ -14,7 +14,8 @@ import { getBikes } from "./redux/actions/bikesActions";
 
 function App() {
   const dispatch = useDispatch();
-  const allBikes = useSelector((state) => state.bikes.allBikes);
+  const allBikes = useSelector((state) => state.bikes);
+
   let bikes;
   if (allBikes.length > 0) {
     bikes = allBikes;

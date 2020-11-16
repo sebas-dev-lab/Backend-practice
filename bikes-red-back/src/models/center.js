@@ -1,19 +1,26 @@
 const { Schema, model } = require("mongoose");
+
 var autoIncrement = require("mongoose-auto-increment"); //no modificar
 autoIncrement.initialize(mongoose.connection); //no modificar
 
-const BikeSchema = new Schema({
+const CenterSchema = new Schema({
   code: {
     type: Number,
-    required: true,
+    unique: true,
   },
-  color: {
+  name: {
     type: String,
-    required: true,
   },
-  model: {
+  description: {
     type: String,
-    required: true,
+  },
+  bikes: {
+    type: Schema.Types.ObjectId,
+    ref: "Bike",
+  },
+  adminCenter: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
   location: {
     type: [Number],
@@ -22,20 +29,11 @@ const BikeSchema = new Schema({
       sparse: true,
     },
   },
-  centerLocation: {
-    type: Schema.Types.ObjectId,
-    ref: "Center",
-  },
 });
 
-BikeSchema.statics.allBikes = function (cb) {
-  return this.find({}, cb);
-};
-BikeSchema.plugin(autoIncrement.plugin, {
-  model: "Bike",
+CenterSchema.plugin(autoIncrement.plugin, {
+  model: "Center",
   field: "code",
   startAt: 1,
   incrementBy: 1,
 });
-
-module.exports = model("Bike", BikeSchema);

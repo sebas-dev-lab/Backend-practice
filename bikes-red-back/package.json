@@ -12,9 +12,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/uuid": "^8.3.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "morgan": "^1.10.0"
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.10.12",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-uuid2": "^2.3.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "jasmine": "^3.6.3",
