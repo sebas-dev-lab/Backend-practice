@@ -5,6 +5,7 @@ var cors = require("cors");
 const app = express();
 const multer = require("multer");
 const uuid = require("uuid/v4");
+const path = require("path");
 
 //Database
 require("dotenv").config();

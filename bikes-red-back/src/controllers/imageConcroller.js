@@ -1,7 +1,16 @@
 const Image = require("../models/image");
 
 exports.post_image = async (req, res) => {
-  const { title, description, filename, path, originalName, size, user, center } = req.body;
+  const {
+    title,
+    description,
+    filename,
+    path,
+    originalName,
+    size,
+    user,
+    center,
+  } = req.body;
 
   if (!title || !description) {
     res
@@ -15,7 +24,7 @@ exports.post_image = async (req, res) => {
     filename,
     originalName,
     size,
-    user, 
+    user,
     center,
   });
   if (!newImage) {
@@ -25,41 +34,46 @@ exports.post_image = async (req, res) => {
   }
 };
 
-exports.get_all_CenterImages = (req, res) => {
-  const {center} = req.params;
+exports.get_all_CenterImages = async (req, res) => {
+  const { center } = req.params;
   if (!center) {
     return res
       .status(400)
       .json({ msg: "The Center can not be undefined or null" });
   }
-  const allImages = await Image.find().populate('center');
-  if(!allImages) {
-      return res.status(400).json({msg:'Could not be found center images'})
-    }
-  res.status(200).json({msg:'ok', allImages: allImages})
-
+  const allImages = await Image.find().populate("center");
+  if (!allImages) {
+    return res.status(400).json({ msg: "Could not be found center images" });
+  }
+  res.status(200).json({ msg: "ok", allImages: allImages });
 };
 
-exports.delete_image=async(req, res)=>{
-    const {code}=req.params;
-    if(!code) return res.status(400).json({msg:'The code image can not be undefined or null'})
+exports.delete_image = async (req, res) => {
+  const { code } = req.params;
+  if (!code)
+    return res
+      .status(400)
+      .json({ msg: "The code image can not be undefined or null" });
 
-    await Image.deleteOne({code: code}, (err, deletedImage)=>{
-        if(err) {
-            console.log(err)
-        }
-        res.status(200).json({msj: 'ok'})
-    })
-}
+  await Image.deleteOne({ code: code }, (err, deletedImage) => {
+    if (err) {
+      console.log(err);
+    }
+    res.status(200).json({ msj: "ok" });
+  });
+};
 
-exports.put_data_image=async(req, res)=>{
-    const {code}=req.params
-    const {title, description}=req.body
-    if(!code) return res.status(400).json({msg: 'Code image could not be found'})
-    await Image.findOneAndUpdate({code: code},{
-        title,
-        description,
-    })
-    res.status(200).json({msg:'ok'})
-}
-
+exports.put_data_image = async (req, res) => {
+  const { code } = req.params;
+  const { title, description } = req.body;
+  if (!code)
+    return res.status(400).json({ msg: "Code image could not be found" });
+  await Image.findOneAndUpdate(
+    { code: code },
+    {
+      title,
+      description,
+    }
+  );
+  res.status(200).json({ msg: "ok" });
+};

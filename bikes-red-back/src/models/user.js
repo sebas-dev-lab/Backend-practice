@@ -1,4 +1,6 @@
 const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
+
 var autoIncrement = require("mongoose-auto-increment"); //no modificar
 autoIncrement.initialize(mongoose.connection); //no modificar
 
@@ -37,7 +39,7 @@ const UserSchema = new Schema({
     ref: "UserActivities",
   },
 });
-userSchema.plugin(autoIncrement.plugin, {
+UserSchema.plugin(autoIncrement.plugin, {
   model: "User",
   field: "code",
   startAt: 1,

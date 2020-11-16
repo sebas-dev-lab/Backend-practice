@@ -1,4 +1,6 @@
 const { Schema, model, SchemaTypes } = require("mongoose");
+const mongoose = require("mongoose");
+
 var autoIncrement = require("mongoose-auto-increment"); //no modificar
 autoIncrement.initialize(mongoose.connection); //no modificar
 
