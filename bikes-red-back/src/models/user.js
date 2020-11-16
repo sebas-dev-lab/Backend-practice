@@ -25,12 +25,16 @@ const UserSchema = new Schema({
   },
   role: {
     type: String,
-    ENUM: ["client", "adminCenter", "AdminApp"],
+    ENUM: ["client", "adminCenter", "adminApp"],
     default: "client",
   },
   centerUserLocation: {
     type: Schema.Types.ObjectId,
     ref: "Center",
+  },
+  userActivities: {
+    type: Schema.Types.ObjectId,
+    ref: "UserActivities",
   },
 });
 userSchema.plugin(autoIncrement.plugin, {

@@ -2,26 +2,21 @@ const { Schema, model } = require("mongoose");
 var autoIncrement = require("mongoose-auto-increment"); //no modificar
 autoIncrement.initialize(mongoose.connection); //no modificar
 
-const ReviewSchema = new Schema({
-  code: { type: Number, unique: true },
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  rating: {
+const CommentUserSchema = new Schema({
+  code: {
     type: Number,
+    required: true,
+  },
+  comment: {
+    type: String,
+    required: true,
   },
 });
 
-ReserveSchema.plugin(autoIncrement.plugin, {
-  model: "Reserve",
+CommentUserSchema.plugin(autoIncrement.plugin, {
+  model: "CommentUser",
   field: "code",
   startAt: 1,
   incrementBy: 1,
 });
-
-module.exports = model("Review", ReviewSchema);
+module.exports = model("CommentUser", CommentUserSchema);

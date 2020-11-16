@@ -1,6 +1,6 @@
 const User = require("../models/user");
 /* ===== client user ==== */
-exports.post_user = async (req, res) => {
+exports.post_user_client = async (req, res) => {
   const { name, dni, phone, email, role, center } = req.body;
   let user = await new User({ name, dni, phone, email, role, center });
   if (!user) return res.status(400).json({ message: "User create error" });
@@ -8,6 +8,26 @@ exports.post_user = async (req, res) => {
   await user.save();
   res.status(200).json({ msg: "ok", user: user });
 };
+/* ===== AdminCenter user ==== */
+exports.post_user_adminCenter = async (req, res) => {
+  const { name, dni, phone, email, role, center } = req.body;
+  let user = await new User({ name, dni, phone, email, role, center });
+  if (!user) return res.status(400).json({ message: "User create error" });
+  user.role = "adminCenter";
+  await user.save();
+  res.status(200).json({ msg: "ok", user: user });
+};
+/* ===== AdminApp user ==== */
+exports.post_user_adminApp = async (req, res) => {
+  const { name, dni, phone, email, role, center } = req.body;
+  let user = await new User({ name, dni, phone, email, role, center });
+  if (!user) return res.status(400).json({ message: "User create error" });
+  user.role = "adminApp";
+  await user.save();
+  res.status(200).json({ msg: "ok", user: user });
+};
+
+/* ===== General operation users ==== */
 
 exports.get_one_user = async (req, res) => {
   const { code } = req.params;

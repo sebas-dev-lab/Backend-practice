@@ -13,13 +13,13 @@ exports.bike_one_get = async function (req, res) {
 };
 
 exports.bike_create_post = async function (req, res) {
-  const { code, color, model, lat, log } = req.body;
+  const { code, color, model, lat, log, centerLocation } = req.body;
   if (!code || !color || !model || !lat || !log)
     return res.status(404).json({ message: "Error al ingresar datos" });
   let location = [];
   location.push(parseFloat(lat));
   location.push(parseFloat(log));
-  const bike = new Bike(id, color, model, location);
+  const bike = new Bike(id, color, model, location, centerLocation);
   await bike.save();
   res.status(200).json({ msj: "ok", bike: bike });
 };
@@ -40,7 +40,7 @@ exports.bike_delete_post = async function (req, res) {
 
 exports.bike_update_put = function (req, res) {
   const { code } = req.params;
-  const { color, model, lat, log } = req.body;
+  const { color, model, lat, log, centerLocation } = req.body;
   let location = [];
   location.push(parseFloat(lat));
   location.push(parseFloat(log));
@@ -54,6 +54,7 @@ exports.bike_update_put = function (req, res) {
         color,
         model,
         location,
+        centerLocation,
       }
     );
     res.status(200).json({ msg: "ok" });

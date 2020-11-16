@@ -14,6 +14,14 @@ const CenterSchema = new Schema({
   description: {
     type: String,
   },
+  email: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: Number,
+    required: true,
+  },
   location: {
     type: [Number],
     index: {
