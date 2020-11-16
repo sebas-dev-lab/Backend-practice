@@ -26,13 +26,13 @@ exports.post_image = async (req, res) => {
 };
 
 exports.get_all_CenterImages = (req, res) => {
-  const codeCenter = req.params;
-  if (!codeCenter) {
+  const {center} = req.params;
+  if (!center) {
     return res
       .status(400)
-      .json({ msg: "The code Center can not be undefined or null" });
+      .json({ msg: "The Center can not be undefined or null" });
   }
-  const allImages = await Image.find({ code: codeCenter });
+  const allImages = await Image.find().populate('center');
   if(!allImages) {
       return res.status(400).json({msg:'Could not be found center images'})
     }
