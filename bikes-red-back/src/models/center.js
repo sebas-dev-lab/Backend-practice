@@ -14,6 +14,13 @@ const CenterSchema = new Schema({
   description: {
     type: String,
   },
+  location: {
+    type: [Number],
+    index: {
+      type: "2dsphere",
+      sparse: true,
+    },
+  },
   bikes: {
     type: Schema.Types.ObjectId,
     ref: "Bike",
@@ -22,12 +29,17 @@ const CenterSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
-  location: {
-    type: [Number],
-    index: {
-      type: "2dsphere",
-      sparse: true,
-    },
+  reviews: {
+    type: Schema.Types.ObjectId,
+    ref: "Reviews",
+  },
+  images: {
+    type: Schema.Types.ObjectId,
+    ref: "Image",
+  },
+  clients: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
 });
 
@@ -37,3 +49,5 @@ CenterSchema.plugin(autoIncrement.plugin, {
   startAt: 1,
   incrementBy: 1,
 });
+
+module.exports = model("Center", CenterSchema);
