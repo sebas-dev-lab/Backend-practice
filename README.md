@@ -1,5 +1,5 @@
 # Bikes-app
-Backend developer-NodeJS, Express y MongoDB 
+Rent-Bikes-app
 
 Hi! My name is Victor Sebastián Lescano but you can tell me Sebastian, I'm From Argentina and in this repo you can see a constructed app with the next technologies 
 (still unfinished): 
