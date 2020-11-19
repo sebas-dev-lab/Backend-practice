@@ -15,6 +15,7 @@ import { getBikes } from "./redux/actions/bikesActions";
 
 /* LESS */
 import "./Styles/globalStyle.less";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
 
   return (
     <div>
+      <CssBaseline />
       <Switch>
         <Route exact path="/admin" component={AdminAppDashboard} />
         <Route exact path="/">

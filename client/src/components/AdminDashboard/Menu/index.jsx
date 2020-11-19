@@ -5,24 +5,45 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import { useStyles } from "./Styles/makeStyles";
 import { menuLinks } from "./routes";
+import { useTheme } from "@material-ui/core/styles";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import { IconButton } from "@material-ui/core";
 
-export default function Menu({ state, toggleDrawer }) {
-  const classes = useStyles();
-  const { _list, fullList } = classes;
+export default function Menu({
+  state,
+  toggleDrawer,
+  classMenu,
+  onClose,
+  menu,
+}) {
+  const { drawer, drawerPaper, drawerHeader } = classMenu;
+  const theme = useTheme();
 
   const list = () => (
     <div
-      className={`${_list} ${fullList}`}
-      role="presentation"
-      onClick={toggleDrawer}
-      onKeyDown={toggleDrawer}
+      onKeyDown={onClose}
+      className={drawer}
+      variant="persistent"
+      anchor="left"
+      classes={{
+        paper: drawerPaper,
+      }}
     >
+      <div className={drawerHeader}>
+        <IconButton onClick={onClose}>
+          {theme.direction === "ltr" ? (
+            <ChevronLeftIcon />
+          ) : (
+            <ChevronRightIcon />
+          )}
+        </IconButton>
+      </div>
       <Divider />
       <List>
         {menuLinks.map(({ title, path, Icon }) => (
-          <ListItem button key={title}>
+          <ListItem button key={title} onClick={onClose}>
             <ListItemIcon>
               <Icon />
             </ListItemIcon>
@@ -35,9 +56,7 @@ export default function Menu({ state, toggleDrawer }) {
 
   return (
     <div>
-      <Drawer open={state} onClose={toggleDrawer}>
-        {list()}
-      </Drawer>
+      <Drawer open={state}>{list()}</Drawer>
     </div>
   );
 }

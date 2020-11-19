@@ -3,10 +3,8 @@ import PlaylistAddCheckOutlinedIcon from "@material-ui/icons/PlaylistAddCheckOut
 import TimelineOutlinedIcon from "@material-ui/icons/TimelineOutlined";
 import { IconButton } from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
-import { useStyles } from "./Styles/makeStyles";
 
-const Icons = () => {
-  const classes = useStyles();
+const Icons = ({ classIcons }) => {
   return (
     <div>
       <IconButton
@@ -15,7 +13,7 @@ const Icons = () => {
         aria-haspopup="true"
         // onClick={handleMenu}
         color="inherit"
-        // className={classes.menuButton}
+        className={classIcons.menuButton}
       >
         <Tooltip title="To do" aria-label="To do">
           <PlaylistAddCheckOutlinedIcon alt="Remy Sharp" />
@@ -27,7 +25,7 @@ const Icons = () => {
         aria-haspopup="true"
         // onClick={handleMenu}
         color="inherit"
-        // className={classes.menuButton}
+        className={classIcons.menuButton}
       >
         <Tooltip title="Resume" aria-label="Resume">
           <TimelineOutlinedIcon />
