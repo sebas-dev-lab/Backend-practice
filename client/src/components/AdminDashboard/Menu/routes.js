@@ -5,7 +5,7 @@ import BugReportIcon from "@material-ui/icons/BugReport";
 export const menuLinks = [
   {
     title: "Centers",
-    path: "/admin/center/",
+    path: "/admin/center",
     Icon: StreetviewIcon,
   },
   {

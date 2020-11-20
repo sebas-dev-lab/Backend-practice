@@ -10,20 +10,16 @@ import { useTheme } from "@material-ui/core/styles";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { IconButton } from "@material-ui/core";
+import Center from "../AdminCenters";
+// import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 
-export default function Menu({
-  state,
-  toggleDrawer,
-  classMenu,
-  onClose,
-  menu,
-}) {
+export default function Menu({ state, toggleDrawer, classMenu, onClose }) {
   const { drawer, drawerPaper, drawerHeader } = classMenu;
   const theme = useTheme();
 
   const list = () => (
     <div
-      onKeyDown={onClose}
       className={drawer}
       variant="persistent"
       anchor="left"
@@ -31,23 +27,29 @@ export default function Menu({
         paper: drawerPaper,
       }}
     >
-      <div className={drawerHeader}>
-        <IconButton onClick={onClose}>
+      {/* <div className={drawerHeader}>
+        <IconButton onClick={toggleDrawer}>
           {theme.direction === "ltr" ? (
             <ChevronLeftIcon />
           ) : (
             <ChevronRightIcon />
           )}
         </IconButton>
-      </div>
+      </div> */}
       <Divider />
-      <List>
+      <List component="nav">
         {menuLinks.map(({ title, path, Icon }) => (
-          <ListItem button key={title} onClick={onClose}>
+          <ListItem
+            button
+            key={title}
+            color="primary"
+            component={Link}
+            to={path}
+          >
             <ListItemIcon>
               <Icon />
             </ListItemIcon>
-            <ListItemText primary={title} path={path} />
+            <ListItemText primary={title} />
           </ListItem>
         ))}
       </List>
@@ -56,7 +58,8 @@ export default function Menu({
 
   return (
     <div>
-      <Drawer open={state}>{list()}</Drawer>
+      {/* <Drawer open={state}>{list()}</Drawer> */}
+      {list()}
     </div>
   );
 }

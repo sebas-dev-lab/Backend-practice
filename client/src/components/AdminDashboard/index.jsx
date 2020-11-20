@@ -1,20 +1,34 @@
 import React from "react";
 import NavBar from "./NavBar";
-import { CssBaseline } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
-import { useStyles, StyledMenuItem, StyledMenu } from "./styles";
+import { Button, CssBaseline, Grid, Typography } from "@material-ui/core";
+import { useStyles } from "./styles";
+import { Route, BrowserRouter as Router } from "react-router-dom";
+import Center from "./AdminCenters";
+
+import Menu from "./Menu/index";
+import CenterForm from "./AdminCenters/CenterForm";
 
 const AdminAppDashboard = () => {
   const classes = useStyles();
-  const theme = useTheme();
-
-  //TODO: Trabajar con un solo archivo makeStyles. Pasar por props las clases
-
   return (
-    <div className={classes.root}>
+    <>
       <CssBaseline />
       <NavBar classNavbar={classes} position="fixed" />
-    </div>
+      <Grid container spacing={3}>
+        <Router>
+          <Grid item xs={3}>
+            <Menu classMenu={classes} />
+          </Grid>
+          <Grid item xs={9}>
+            <Route exact path="/admin/center">
+              <Center />
+            </Route>
+          </Grid>
+        </Router>
+      </Grid>
+
+      <div className={classes.offset}></div>
+    </>
   );
 };
 

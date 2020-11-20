@@ -16,8 +16,15 @@ import { getBikes } from "./redux/actions/bikesActions";
 /* LESS */
 import "./Styles/globalStyle.less";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import Center from "./components/AdminDashboard/AdminCenters";
+import { ThemeProvider } from "@material-ui/core";
+import theme from "./Styles/themeConfig";
+import { useStyles } from "./components/AdminDashboard/styles";
+import CenterForm from "./components/AdminDashboard/AdminCenters/CenterForm";
 
 function App() {
+  const classes = useStyles();
+
   const dispatch = useDispatch();
   const allBikes = useSelector((state) => state.bikes);
 
@@ -32,10 +39,12 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Switch>
+        {/*====== Admin dashboard ======== */}
         <Route exact path="/admin" component={AdminAppDashboard} />
+        <Route exat path="/admin/center" component={Center} />
         <Route exact path="/">
           <HomePage bikes={bikes} />
         </Route>
@@ -45,7 +54,8 @@ function App() {
         <Route exact path="/bikes/create" component={FormAddBike} />
         <Route exact path="/bikes/update" component={FormUpdate} />
       </Switch>
-    </div>
+      <div className={classes.offset}></div>
+    </ThemeProvider>
   );
 }
 

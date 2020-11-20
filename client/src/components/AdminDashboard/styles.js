@@ -3,6 +3,7 @@ import { Menu, MenuItem } from "@material-ui/core";
 const drawerWidth = 240;
 
 export const useStyles = makeStyles((theme) => ({
+  offset: theme.mixins.toolbar,
   root: {
     display: "flex",
   },
