@@ -9,18 +9,17 @@ import TableMap from "./components/table/table";
 import FormAddBike from "./components/table/formAdd/formAdd";
 import FormUpdate from "./components/table/formUpdate/formUpdate";
 import AdminAppDashboard from "./components/AdminDashboard";
+import Center from "./components/AdminDashboard/AdminCenters";
 
 /* Actions-Redux */
 import { getBikes } from "./redux/actions/bikesActions";
 
-/* LESS */
-import "./Styles/globalStyle.less";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Center from "./components/AdminDashboard/AdminCenters";
-import { ThemeProvider } from "@material-ui/core";
-import theme from "./Styles/themeConfig";
+/* LESS // material Ui */
 import { useStyles } from "./components/AdminDashboard/styles";
-import CenterForm from "./components/AdminDashboard/AdminCenters/CenterForm";
+import { ThemeProvider } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import theme from "./Styles/themeConfig";
+import "./Styles/globalStyle.less";
 
 function App() {
   const classes = useStyles();
