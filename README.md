@@ -1,13 +1,11 @@
-# Bikes-app
-Rent-Bikes-app
+### Bikes-app
+**Rent-Bikes-app**
 
-Hi! My name is Victor Sebastián Lescano but you can tell me Sebastian, I'm From Argentina and in this repo you can see a constructed app with the next technologies 
-(still unfinished): 
+**Tools and technologies**
 
-Backend: Node Js, Express, MongoDB
+__Backend: Node Js, Express, MongoDB //Atlas conexion//
 
-Frontend: React-Redux, React-router/dom, Leaftlet, Axios ,reactstrap 
+__Frontend: React-Redux, React-router/dom, Leaftlet, ChartJs ,Axios ,reactstrap, Material-ui
 
-Testing: Jasmine
+__Testing: Jasmine
 
-Remember this app is still unfinished XD.
